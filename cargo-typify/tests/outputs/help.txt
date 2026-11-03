@@ -1,0 +1,42 @@
+cargo command to generate Rust code from a JSON Schema
+
+Usage: cargo typify [OPTIONS] <INPUT>
+
+Arguments:
+  <INPUT>
+          The input file to read from
+
+Options:
+  -b, --builder
+          Whether to include a builder-style interface, this is the default
+
+  -B, --no-builder
+          Inverse of `--builder`. When set the builder-style interface will not be included
+
+  -d, --additional-derive <derive>
+          Add an additional derive macro to apply to all defined types
+
+  -a, --additional-attr <attr>
+          Add an additional attribute to apply to all defined types
+
+  -o, --output <OUTPUT>
+          The output file to write to. If not specified, the input file name will be used with a `.rs` extension.
+          
+          If `-` is specified, the output will be written to stdout.
+
+      --crate <CRATES>
+          Specify each crate@version that can be assumed to be in use for types found in the schema with the x-rust-type extension
+
+      --map-type <MAP_TYPE>
+          Specify the map like type to use
+
+      --unknown-crates <UNKNOWN_CRATES>
+          Specify the policy unknown crates found in schemas with the x-rust-type extension
+          
+          [possible values: generate, allow, deny]
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version

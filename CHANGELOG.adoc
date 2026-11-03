@@ -1,0 +1,278 @@
+:showtitle:
+:toc: left
+:icons: font
+:toclevels: 1
+
+= Typify Changelog
+
+// WARNING: This file is modified programmatically by `cargo release` as
+// configured in release.toml.  DO NOT change the format of the headers or the
+// list of raw commits.
+
+// cargo-release: next header goes here (do not change this line)
+
+== Unreleased changes (release date TBD)
+
+https://github.com/oxidecomputer/typify/compare/v0.8.0\...HEAD[Full list of commits]
+
+== 0.8.0 (released 2026-09-09)
+
+https://github.com/oxidecomputer/typify/compare/v0.7.0\...v0.8.0[Full list of commits]
+
+* Remove the original JSON Schema from generated type docs (#1066)
+* Require `Option` fields marked as *required* to be present when deserializing (#1071)
+* Small output changes such as item reordering (#1071)
+* Derive `Default` for structs when all field defaults are the type's intrinsic default (#1035)
+* Report malformed schema JSON as a compile error instead of panicking (#1030)
+* Report an error instead of panicking on invalid map types; re-export `MapType` from the `typify` crate (#1031)
+* Fix panic with internally tagged enums whose name comes from a schema title (#1020)
+* Count code points, not bytes, in string length validation during schema processing (#1038)
+* Remove remaining non-idiomatic `TryFrom<&String>` trait impls (#1040)
+* Fix invalid Rust emitted for default values on types with flattened properties (#1039)
+
+== 0.7.0 (released 2026-06-05)
+
+https://github.com/oxidecomputer/typify/compare/v0.6.2\...v0.7.0[Full list of commits]
+
+* Support for merging multiple string types with pattern fields (#1008)
+* Generate `JsonSchema` for newtypes with enumerated patterns (#1017)
+
+== 0.6.2 (released 2026-04-24)
+
+https://github.com/oxidecomputer/typify/compare/v0.6.1\...v0.6.2[Full list of commits]
+
+* Improve merging of strings and numbers (#998)
+* Avoid generation of unused default functions (#990)
+* Pass through f64 field descriptions (#974)
+
+== 0.6.1 (released 2026-02-10)
+
+https://github.com/oxidecomputer/typify/compare/v0.6.0\...v0.6.1[Full list of commits]
+
+* Add public `accept_as_ident` to determine if a string is a valid Rust identifier (#973)
+
+== 0.6.0 (released 2026-02-03)
+
+https://github.com/oxidecomputer/typify/compare/v0.5.0\...v0.6.0[Full list of commits]
+
+* remove non-idiomatic From<&String> trait impls (#946)
+* allow custom attributes to be applied to all generated types with `attrs` setting (#949)
+* remove non-idiomatic From<&T> for T trait impls (#945)
+* use inline format args in generated code (#934)
+* properly handle JSON pointer escape sequences (#940)
+
+== 0.5.0 (released 2025-10-09)
+
+https://github.com/oxidecomputer/typify/compare/v0.4.3\...v0.5.0[Full list of commits]
+
+* improve heuristics for enum variant naming (#894)
+
+== 0.4.3 (released 2025-08-15)
+
+https://github.com/oxidecomputer/typify/compare/v0.4.2\...v0.4.3[Full list of commits]
+
+* allow the map type to be specified by macro users (#835)
+* handle more flavors of the unsatisfiable schema (#842 and #869)
+* avoid warnings with Rust 1.89 lifetime checks (#827)
+
+== 0.4.2 (released 2025-05-27)
+
+https://github.com/oxidecomputer/typify/compare/v0.4.1\...v0.4.2[Full list of commits]
+
+* improve merging logic for "not" schemas (#831)
+* improve regex validation performance. (#825)
+* remove some dead code that displeases more recent rust versions (#826)
+
+== 0.4.1 (released 2025-04-30)
+
+https://github.com/oxidecomputer/typify/compare/v0.4.0\...v0.4.1[Full list of commits]
+
+* improve `null` recognition (#817)
+* improve identification of mutually incompatible `anyOf` subschemas (#817)
+
+== 0.4.0 (released 2025-04-16)
+
+https://github.com/oxidecomputer/typify/compare/v0.3.0\...v0.4.0[Full list of commits]
+
+* Doc fixes
+* Slightly more effort made to disambiguate enum variant identifiers (#762)
+* Fix for panic with non-zero integers, nullable types, and default values (#771)
+* Greater consistency wrt `additionalProperties` interpretation (#773)
+* Fix for string length validation for non ascii strings (#776)
+* Improved handling of integer format with min/max values (#733)
+
+== 0.3.0 (released 2024-12-27)
+
+https://github.com/oxidecomputer/typify/compare/v0.2.0\...v0.3.0[Full list of commits]
+
+* Mark newtype wrappers as `#[serde(transparent)]` (#724)
+* impl `Default` for structs where all properties have a default (#725)
+* Add support specifying the map type to use (#708)
+* Fully qualify more type names e.g. from `std` (#705)
+
+These changes may break users of previous versions in particular if you were to
+implement `Default` by hand for types for which the implementation is now
+generated.
+
+== 0.2.0 (released 2024-09-26)
+
+https://github.com/oxidecomputer/typify/compare/v0.1.0\...v0.2.0[Full list of commits]
+
+* Migrate from `ToString` to `std::fmt::Display` (#663)
+* fully qualify types and traits (#647)
+* Add support for `patternProperties` in particular circumstances (#637)
+* Fully qualify `serde::Deserialize`` and `serde::Serialize` in outputs (#634)
+* Fix panic in `all_mutually_exclusive` and allow multiple subschema types in a single schema (#627)
+* handle default values for fields represented as `NonZeroU{8,16,32}`` (#608)
+
+== 0.1.0 (released 2024-05-13)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.16\...v0.1.0[Full list of commits]
+
+* Improvements and bug fixes around schema merging
+* Fixes for various bugs with defaults
+* Support for the `x-rust-type` extension (#584)
+
+== 0.0.16 (released 2024-02-28)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.15\...v0.0.16[Full list of commits]
+
+* Introduce a proper Error type for various conversions (#475)
+* Add docs to generated mods (#476)
+* Various enum improvements
+
+== 0.0.15 (released 2023-12-15)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.14\...v0.0.15[Full list of commits]
+
+* Improvements to array merging and mutual exclusivity checks (#412)
+* Support for 32-bit floating-point numbers (#440)
+* Better handling for unsatisfiable merged schemas (#447)
+* Show original JSON Schema in generated type docs (#454)
+
+== 0.0.14 (released 2023-09-25)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.13\...v0.0.14[Full list of commits]
+
+* Handle arbitrary containment cycles (#300)
+* More permissive of valid (if useless) schema constructions (#306, #320)
+* Much better handling of `allOf` constructions by merging schemas (#405)
+* Support for more `not` subschemas (#410)
+
+== 0.0.13 (released 2023-05-14)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.12\...v0.0.13[Full list of commits]
+
+* Fixed-length, single-type arrays to `[T; N]` (#286)
+* Support for reflexive schemas (#292)
+* Much improved support for multi-type schemas (#291)
+* Better error messages on failures
+
+== 0.0.12 (released 2023-05-03)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.11\...v0.0.12[Full list of commits]
+
+* Improved enum generation (#270)
+* Improved integer type selection based on number criteria (#255)
+* `TypeSpace::add_root_schema()` (#236)
+* ... and many general improvements
+
+== 0.0.11 (released 2023-03-18)
+
+This is a big update with many, many changes to code generation, and many more
+JSON schema structures well-handled. Among the many changes:
+
+* Generate a `ToString` impl for untagged enums with trivial variants (#145)
+* Allow conversion overrides by specifying a schema (#155)
+* Handle untyped enums that contain nulls (#167)
+* Handle `not` schemas for enumerated values (#168)
+* Improve generated code for FromStr and TryFrom impls (#174)
+* Handle format specifiers for enumerated strings (#188)
+
+=== *Breaking*: The removal of `TypeSpace::to_string()`
+
+Previously all transitive consumers required the presence of `rustfmt`. In this
+version we leave formatting to the consumer. See link:README.md#formatting[the formatting section of the README] for details on formatting.
+
+=== CLI
+
+This version adds the `cargo-typify` crate for stand-alone code generation.
+
+=== Augmented Generation
+
+Consumers can now affect how code is generated in several ways:
+* adding derive macros to all generated types
+* modifying specific types by name to rename them or add derive macros
+* specifying a replacement type by name
+* specifying a replacement type by schema pattern
+
+https://github.com/oxidecomputer/typify/compare/v0.0.10\...v0.0.11[Full list of commits]
+
+* Allow per-type renames and derive macro applications (#131)
+* `ToString` implementations for untagged enums with trivial newtype variants (#145)
+* Fixed an issue with generation of enum defaults (#137)
+* Allow conversion overrides by specifying a schema (#155)
+
+== 0.0.10 (released 2022-09-10)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.9\...v0.0.10[Full list of commits]
+
+* Add support for string types with `format` set to `ip`, `ipv4`, or `ipv6` (#76)
+* Be more accommodating in the face of a missing `type` field #(79)
+* The order of derives on types has stabilized (and therefore has changed) (#81)
+* Specific `From` and `Deserialize` implementations for constrained string types (#81)
+* Specific `From` implementation for untagged enums with constrained string variants (#81)
+* `FromStr` implementation for simple-variant-only `enum`s (#81)
+* Ignore unknown `format` values (#81)
+* Added `regress` dependency for ECMA 262 style regexes (#81)
+* Dropshot produces a complex `Null` type (by necessity); now rendered as `()` (#83)
+* Fixed rendering of enums with a single variant (#87)
+* Updated public interface (breaking for consumers) (#98)
+* Optional builder interface for generated structs (#98)
+
+== 0.0.9 (released 2022-06-20)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.8\...v0.0.9[Full list of commits]
+
+* Switched from `unicode-xid` to `unicode-ident` (#60)
+* Elevate `TypeDetail::String` rather than `TypeDetail::BuiltIn("String")` (#72)
+
+== 0.0.8 (released 2022-05-22)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.7\...v0.0.8[Full list of commits]
+
+* Support for integer schemas with `enum_values` populated (breaking change) (#57)
+* Deeper inspection of `oneOf` constructions to make better `enum`s (#59)
+* Simple handling for "constraint" `allOf` constructions (#59)
+* Improved handling of non-required unit struct members (#59)
+
+== 0.0.7 (released 2022-05-18)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.6\...v0.0.7[Full list of commits]
+
+* Update to `uuid` v1.0.0 for testing (non-breaking change)
+
+== 0.0.6 (released 2022-05-12)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.5\...v0.0.6[Full list of commits]
+
+* Add an interface to allow consumers to specify additional derives for generated types (#35)
+* Handle all invalid identifier characters (#37)
+* Add support for `std::net::Ipv6Addr` type (#38)
+* Add `Copy` to simple enums (#40)
+* `Box` trivial cyclic refs (#41)
+* Move to heck for case conversion (#43)
+* Improve handling of default values for object properties (#44)
+
+== 0.0.5 (released 2021-11-06)
+
+https://github.com/oxidecomputer/typify/compare/v0.0.4\...v0.0.5[Full list of commits]
+
+* use include_str! so that our macro is re-run if the given file changes (#27)
+* Better handling of enums that look like the Result type (#26)
+* Pass through name for make_map (#25)
+
+
+== 0.0.4 (released 2021-11-06)
+
+First published version
